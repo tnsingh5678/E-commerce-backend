@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const Seller = require('../models/seller.js'); // Adjust the path to your Seller schema
 const router = express.Router();
+const sendVerificationEmail = require('./EmailVerification.js')
 
 // Seller Login
 router.post('/login', async (req, res) => {
@@ -102,6 +103,8 @@ router.post('/seller/signup', async (req, res) => {
     });
 
     await seller.save();
+
+    await sendVerificationEmail(seller);
 
     // Store sellerId in session
     req.session.sellerId = sellerId;
