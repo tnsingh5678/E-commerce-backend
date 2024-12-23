@@ -24,7 +24,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000','https://merabestie.com','https://hosteecommerce.vercel.app','https://e-commerce-frontend-nine-jade.vercel.app'], 
+  origin: ['http://localhost:3000','https://merabestie.com','https://hosteecommerce.vercel.app','https://e-commerce-frontend-nine-jade.vercel.app','https://e-commerce-frontend-git-main-tnsingh5678s-projects.vercel.app','https://e-commerce-frontend-7qxeo8ewy-tnsingh5678s-projects.vercel.app'], 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
