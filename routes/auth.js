@@ -3,7 +3,7 @@ const User = require('../models/user.js');
 const Seller = require('../models/seller.js')
 const router = express.Router();
 const bcrypt = require('bcrypt');
-
+const sendVerificationEmail = require('./EmailVerification.js')
 
 router.post('/signup', async (req, res) => {
     try {
@@ -130,6 +130,8 @@ router.post('/seller/signup', async (req, res) => {
     });
 
     await seller.save();
+
+    await sendVerificationEmail(seller);
 
     // Store sellerId in session
     req.session.sellerId = sellerId;

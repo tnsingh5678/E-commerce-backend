@@ -3,9 +3,16 @@ const router = express.Router()
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const Product = require('../models/product.js'); 
+require('dotenv').config();
 
 const storage = multer.memoryStorage(); // Store files in memory, will be uploaded to Cloudinary
 const upload = multer({ storage: storage }).array('images', 5); // Allow up to 5 images
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET_KEY
+})
 
 // Route to add a product with images
 router.post('/addproduct', upload, async (req, res) => {

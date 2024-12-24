@@ -32,7 +32,7 @@ const sendVerificationEmail = async (seller) => {
 
  
   const mailOptions = {
-    from: 'your-email@gmail.com',
+    from: process.env.EMAIL_USER,
     to: seller.email,
     subject: 'Email Verification',
     html: `<p>Please verify your email by clicking the link below:</p><a href="${verificationLink}">Verify Email</a>`,
